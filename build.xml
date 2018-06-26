@@ -15,6 +15,7 @@
 	<target name="build">
 		<delete dir="${classes}" failonerror="false"/>
 		<mkdir dir="${classes}"/>
+		<mkdir dir="${resources}"/>
 
 		<javac executable="javac" fork="true" srcdir="${src}" destdir="${classes}" debug="true" classpathref="classpath">
 			<include name="**/*.java"/>
