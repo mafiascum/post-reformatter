@@ -1,0 +1,28 @@
+<project name="build ms post reformatter" default="build" basedir=".">
+
+	<property name="root" value="."/>
+	<property name="lib" value="${root}/lib"/>
+	<property name="src" value="${root}/src"/>
+	<property name="classes" value="${root}/classes"/>
+	<property name="resources" value="${root}/resources"/>
+
+	<path id="classpath">
+		<fileset dir="${lib}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="build">
+		<delete dir="${classes}" failonerror="false"/>
+		<mkdir dir="${classes}"/>
+
+		<javac executable="javac" fork="true" srcdir="${src}" destdir="${classes}" debug="true" classpathref="classpath">
+			<include name="**/*.java"/>
+		</javac>
+
+		<jar destfile="${lib}/ms-post-reformatter.jar">
+			<fileset dir="${classes}" />
+			<fileset dir="${resources}" />
+		</jar>
+	</target>
+</project>
